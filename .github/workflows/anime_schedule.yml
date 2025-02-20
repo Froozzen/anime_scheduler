@@ -1,9 +1,8 @@
 name: Update Anime Countdown
 
 on:
-  push:
-    branches:
-      - main  # Or the name of your default branch
+  schedule:
+    - cron: '0 * * * *'  # Runs at 20 minutes past every hour (UTC)
 
 jobs:
   run_script:
