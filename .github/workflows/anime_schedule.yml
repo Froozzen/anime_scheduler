@@ -26,5 +26,5 @@ jobs:
         run: |
           python update_anime_schedule.py  # Replace with your script filename if it's different
         env:
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-          MESSAGE_ID: ${{ secrets.MESSAGE_ID }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}  # Fetch the secret for webhook URL
+          MESSAGE_ID: ${{ secrets.MESSAGE_ID }}  # Fetch the secret for message ID
