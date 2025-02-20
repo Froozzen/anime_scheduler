@@ -45,7 +45,13 @@ def update_countdown():
             f"Time Left: {int(days)}d {int(hours)}h {int(minutes)}m\n"
             f"Release Date: {next_release.strftime('%Y-%m-%d %H:%M %Z')}\n\n"
         )
+# Add URLs for airing and next season
+    message += "Currently Airing:\n"
+    message += "https://myanimelist.net/topanime.php?type=airing\n\n"
 
+    message += "Next Season:\n"
+    message += "https://myanimelist.net/topanime.php?type=upcoming\n\n"
+    
     last_edited = now.strftime("%Y-%m-%d %H:%M %Z")
     message += f"Last Edited: {last_edited}"
 
