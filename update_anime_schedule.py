@@ -4,8 +4,8 @@ import os
 from pytz import timezone
 
 # Discord webhook details (using environment variables)
-WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')
-MESSAGE_ID = os.getenv('DISCORD_MESSAGE_ID')
+WEBHOOK_URL = os.getenv('WEBHOOK_URL')
+MESSAGE_ID = os.getenv('MESSAGE_ID')
 
 # Anime release schedules
 anime_releases = {
