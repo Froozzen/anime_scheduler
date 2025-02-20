@@ -7,7 +7,7 @@ on:
 
 jobs:
   run_script:
-    runs-on: ubuntu-latest  # Runs on a fresh Ubuntu VM
+    runs-on: ubuntu-latest  # Runs on a fresh Ubuntu VM1
 
     steps:
       - name: Checkout code
