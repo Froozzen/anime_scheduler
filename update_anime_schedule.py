@@ -10,7 +10,7 @@ MESSAGE_ID = os.getenv('MESSAGE_ID')
 # Anime release schedules
 anime_releases = {
     "Solo Leveling": {
-        "total_episodes": 13,
+        "total_episodes": 12,
         "current_episode": 7,
         "next_release": datetime.datetime(2025, 2, 22, 18, 30, tzinfo=timezone("Europe/Berlin")),
         "release_interval": datetime.timedelta(weeks=1)
