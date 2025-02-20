@@ -6,29 +6,25 @@ on:
       - main  # Or the name of your default branch
 
 jobs:
-  update-countdown:
-    runs-on: ubuntu-latest  # This specifies the runner environment (using Ubuntu here)
+  run_script:
+    runs-on: ubuntu-latest  # Runs on a fresh Ubuntu VM
 
     steps:
-      # Checkout the repository code so the workflow can access your script
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Install dependencies (e.g., Python, requests)
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'  # Use the Python version you require
+          python-version: '3.x'  # You can specify the exact version if needed
 
-      # Install required Python packages (like requests)
       - name: Install dependencies
         run: |
-          pip install requests
+          pip install requests pytz  # Install both requests and pytz
 
-      # Run the Python script
-      - name: Run the script
-        env:
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}  # Use your secret webhook URL
-          MESSAGE_ID: ${{ secrets.MESSAGE_ID }}    # Use your secret message ID
+      - name: Run script
         run: |
-          python3 update_anime_schedule.py  # Replace with your script filename if it's different
+          python update_anime_schedule.py  # Replace with your script filename if it's different
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          MESSAGE_ID: ${{ secrets.MESSAGE_ID }}
