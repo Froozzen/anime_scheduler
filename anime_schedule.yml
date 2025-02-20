@@ -2,8 +2,7 @@ name: Update Anime Countdown
 
 on:
   schedule:
-    # Runs every day at 16:00 UTC
-    - cron: "0 16 * * *"  # This cron expression triggers the action at 16:00 UTC every day
+    - cron: "0 * * * *"  # This runs the workflow at the start of every hour
 
 jobs:
   update-countdown:
