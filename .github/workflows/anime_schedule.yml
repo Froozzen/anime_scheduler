@@ -3,7 +3,7 @@ name: Update Anime Countdown
 
 on:
   schedule:
-    - cron: '15 * * * *'  # Runs at 20 minutes past every hour (UTC)
+    - cron: '12 * * * *'  # Runs at 20 minutes past every hour (UTC)
 
 jobs:
   run_script:
