@@ -1,8 +1,9 @@
 name: Update Anime Countdown
 
 on:
-  schedule:
-    - cron: "20 * * * *"  # This runs the workflow at the start of every hour
+  push:
+    branches:
+      - main  # Or the name of your default branch
 
 jobs:
   update-countdown:
