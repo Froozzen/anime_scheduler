@@ -48,11 +48,11 @@ def update_countdown():
         )
 
     # Add URLs for airing and next season
-    message += "Currently Airing:\n"
-    message += "https://myanimelist.net/topanime.php?type=airing\n\n"
+message += "Currently Airing:\n"
+message += "<https://myanimelist.net/topanime.php?type=airing>\n\n"
 
-    message += "Next Season:\n"
-    message += "https://myanimelist.net/topanime.php?type=upcoming\n\n"
+message += "Next Season:\n"
+message += "<https://myanimelist.net/topanime.php?type=upcoming>\n\n"
     
     # Last edited timestamp
     last_edited = now.strftime("%Y-%m-%d %H:%M %Z")
