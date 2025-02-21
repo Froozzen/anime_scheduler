@@ -34,7 +34,7 @@ def update_countdown():
     message = "📅 **Anime Release Schedule**\n\n"
 
     for anime, details in anime_releases.items():
-        next_release = details["next_release"]
+        next_release = details["next_release"].astimezone(timezone("Europe/Berlin"))  # Ensure timezone correctness
         if now > next_release:
             while now > next_release:
                 next_release += details["release_interval"]
@@ -46,14 +46,13 @@ def update_countdown():
         minutes, _ = divmod(remainder, 60)
 
         # Properly formatting timezone abbreviation
-        tz_abbr = next_release.strftime('%z')  # Get UTC offset
-        tz_name = next_release.tzinfo.tzname(next_release)  # Get correct timezone name (CET/CEST)
+        tz_abbr = next_release.strftime('%Z')  # Correct timezone abbreviation (CET/CEST)
 
         message += (
             f"**{anime}**\n"
             f"Next Episode: {details['current_episode'] + 1}/{details['total_episodes']}\n"
             f"Time Left: {int(days)}d {int(hours)}h {int(minutes)}m\n"
-            f"Release Date: {next_release.strftime('%Y-%m-%d %H:%M')} {tz_name} ({tz_abbr})\n\n"
+            f"Release Date: {next_release.strftime('%Y-%m-%d %H:%M')} {tz_abbr}\n\n"
         )
 
     # Add URLs for airing and next season
@@ -64,10 +63,9 @@ def update_countdown():
     message += "<https://myanimelist.net/topanime.php?type=upcoming>\n\n"
     
     # Last edited timestamp
-    tz_name = now.tzinfo.tzname(now)
-    tz_abbr = now.strftime('%z')
-    last_edited = now.strftime('%Y-%m-%d %H:%M')
-    message += f"Last Edited: {last_edited} {tz_name} ({tz_abbr})"
+    now = now.astimezone(timezone("Europe/Berlin"))  # Ensure timezone is correct
+    last_edited = now.strftime('%Y-%m-%d %H:%M %Z')
+    message += f"Last Edited: {last_edited}"
 
     # Send the message via Discord webhook
     data = {"content": message}
