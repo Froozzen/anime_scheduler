@@ -20,6 +20,12 @@ anime_releases = {
         "current_episode": 1122,
         "next_release": datetime.datetime(2025, 4, 6, 4, 45, tzinfo=timezone("Europe/Berlin")),
         "release_interval": datetime.timedelta(weeks=1)
+    },
+    "I'm a Noble on the Brink of Ruin, So I Might as Well Try Mastering Magic": {
+        "total_episodes": 12,
+        "current_episode": 7,
+        "next_release": datetime.datetime(2025, 2, 23, 17, 00, tzinfo=timezone("Europe/Berlin")),
+        "release_interval": datetime.timedelta(weeks=1)
     }
 }
 
