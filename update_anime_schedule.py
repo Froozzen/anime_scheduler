@@ -39,12 +39,15 @@ def update_countdown():
         hours, remainder = divmod(remainder, 3600)
         minutes, _ = divmod(remainder, 60)
 
-        # Format the message with proper timezone handling
+        # Properly formatting timezone abbreviation
+        tz_abbr = next_release.strftime('%z')  # Get UTC offset
+        tz_name = next_release.tzinfo.tzname(next_release)  # Get correct timezone name (CET/CEST)
+
         message += (
             f"**{anime}**\n"
             f"Next Episode: {details['current_episode'] + 1}/{details['total_episodes']}\n"
             f"Time Left: {int(days)}d {int(hours)}h {int(minutes)}m\n"
-            f"Release Date: {next_release.strftime('%Y-%m-%d %H:%M %Z')}\n\n"
+            f"Release Date: {next_release.strftime('%Y-%m-%d %H:%M')} {tz_name} ({tz_abbr})\n\n"
         )
 
     # Add URLs for airing and next season
@@ -55,8 +58,10 @@ def update_countdown():
     message += "<https://myanimelist.net/topanime.php?type=upcoming>\n\n"
     
     # Last edited timestamp
-    last_edited = now.strftime("%Y-%m-%d %H:%M %Z")
-    message += f"Last Edited: {last_edited}"
+    tz_name = now.tzinfo.tzname(now)
+    tz_abbr = now.strftime('%z')
+    last_edited = now.strftime('%Y-%m-%d %H:%M')
+    message += f"Last Edited: {last_edited} {tz_name} ({tz_abbr})"
 
     # Send the message via Discord webhook
     data = {"content": message}
